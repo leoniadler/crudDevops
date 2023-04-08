@@ -106,11 +106,11 @@ public class AlunoControllerTest {
     }
     
     
-//    @PostMapping(produces = "application/json")
-//    public Aluno save(@RequestBody Aluno aluno) {
-//        
-//        return AlunoService.save(aluno);
-//    }
+    @PostMapping(produces = "application/json")
+    public Aluno save(@RequestBody Aluno aluno) {
+        
+        return AlunoService.save(aluno);
+    }
     
 //    @Test
 //    public void testInserir() throws Exception {

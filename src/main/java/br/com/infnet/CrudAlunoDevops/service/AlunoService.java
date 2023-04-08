@@ -12,6 +12,11 @@ public class AlunoService {
     private AlunoRepository alunoRepository;
     // restante do código
 
+	public static Aluno save(Aluno aluno) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }
 
