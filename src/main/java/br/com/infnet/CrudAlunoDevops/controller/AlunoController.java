@@ -46,6 +46,7 @@ public class AlunoController {
         return alunoRepository.save(aluno);
     }
 
+
     @PutMapping("/{id}")
     public ResponseEntity<Aluno> atualizar(@PathVariable Long id, @RequestBody Aluno alunoAtualizado) {
         Optional<Aluno> aluno = alunoRepository.findById(id);
