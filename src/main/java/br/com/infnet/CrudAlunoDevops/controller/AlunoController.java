@@ -23,7 +23,7 @@ import br.com.infnet.CrudAlunoDevops.repository.AlunoRepository;
 @RequestMapping("/alunos")
 public class AlunoController {
     @Autowired
-    private AlunoRepository alunoRepository;
+    private final AlunoRepository alunoRepository;
 
     @GetMapping
     public List<Aluno> listar() {
@@ -40,7 +40,19 @@ public class AlunoController {
         }
     }
 
-    @PostMapping("/{id}")
+//    @PostMapping("/{id}")
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public Aluno inserir(@RequestBody Aluno aluno) {
+//        return alunoRepository.save(aluno);
+//    }
+    
+   
+
+    public AlunoController(AlunoRepository alunoRepository) {
+        this.alunoRepository = alunoRepository;
+    }
+
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Aluno inserir(@RequestBody Aluno aluno) {
         return alunoRepository.save(aluno);
