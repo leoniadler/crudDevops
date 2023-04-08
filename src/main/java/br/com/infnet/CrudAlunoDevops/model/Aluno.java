@@ -22,12 +22,12 @@ public class Aluno {
 	    }
 
 	    
-//	    public Aluno() {
-//	        this.id = 0L;
-//	        this.nome = "";
-//	        this.idade = 0;
-//	        this.curso = "";
-//	    }
+	    public Aluno() {
+	        this.id = 0L;
+	        this.nome = "";
+	        this.idade = 0;
+	        this.curso = "";
+	    }
 
 
     
