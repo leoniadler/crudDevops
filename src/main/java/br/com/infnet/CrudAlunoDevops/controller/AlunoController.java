@@ -45,19 +45,19 @@ public class AlunoController {
         }
     }
 
-//    @PostMapping("/{id}")
-//    @ResponseStatus(HttpStatus.CREATED)
-//    public Aluno inserir(@RequestBody Aluno aluno) {
-//        return alunoRepository.save(aluno);
-//    }
-    
- 
-
-    @PostMapping
+    @PostMapping("/{id}")
     @ResponseStatus(HttpStatus.CREATED)
     public Aluno inserir(@RequestBody Aluno aluno) {
         return alunoRepository.save(aluno);
     }
+    
+ 
+//
+//    @PostMapping
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public Aluno inserir(@RequestBody Aluno aluno) {
+//        return alunoRepository.save(aluno);
+//    }
 
 
     @PutMapping("/{id}")
