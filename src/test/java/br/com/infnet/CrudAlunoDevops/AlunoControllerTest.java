@@ -1,7 +1,7 @@
 package br.com.infnet.CrudAlunoDevops;
-import static org.hamcrest.CoreMatchers.any;
+import static org.hamcrest.Matchers.any;
 
-import static org.hamcrest.CoreMatchers.any;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
