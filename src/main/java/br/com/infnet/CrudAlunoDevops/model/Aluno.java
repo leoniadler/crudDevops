@@ -22,26 +22,14 @@ public class Aluno {
 	    }
 
 	    
-	    public Aluno() {
-	        this.id = 0L;
-	        this.nome = "";
-	        this.idade = 0;
-	        this.curso = "";
-	    }
+//	    public Aluno() {
+//	        this.id = 0L;
+//	        this.nome = "";
+//	        this.idade = 0;
+//	        this.curso = "";
+//	    }
 
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private Long id;
-//    private String nome;
-//    private int idade;
-//    private String curso;
-//    
-//    public Aluno(int id, String nome, int idade, String curso) {
-//        this.id = (long) id;
-//        this.nome = nome;
-//        this.idade = idade;
-//        this.curso = curso;
-//    }
+
     
 	public Long getId() {
 		return id;

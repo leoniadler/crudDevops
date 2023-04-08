@@ -1,5 +1,6 @@
 package br.com.infnet.CrudAlunoDevops;
 
+import static org.hamcrest.CoreMatchers.any;
 import static org.hamcrest.CoreMatchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -25,7 +26,7 @@ import br.com.infnet.CrudAlunoDevops.model.Aluno;
 import br.com.infnet.CrudAlunoDevops.repository.AlunoRepository;
 
 import static org.mockito.BDDMockito.given;
-
+import static org.mockito.Mockito.when;
 import static org.hamcrest.Matchers.hasSize;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -81,15 +82,28 @@ public class AlunoControllerTest {
                 .andExpect(status().isNotFound());
     }
 
+//    @Test
+//    public void testInserir() throws Exception {
+//        Aluno aluno = new Aluno(1L, "João", 20, "Engenharia");
+//
+//        given(alunoRepository.save(aluno)).willReturn(aluno);
+//
+//        mockMvc.perform(post("/alunos")
+//                .contentType(MediaType.APPLICATION_JSON)
+//                .content("{ \"id\": 1, \"nome\": \"João\", \"idade\": 20, \"curso\": \"Engenharia\" }"))
+//                .andExpect(status().isCreated())
+//                .andExpect(jsonPath("$.id", is(1)))
+//                .andExpect(jsonPath("$.nome", is("João")))
+//                .andExpect(jsonPath("$.idade", is(20)))
+//                .andExpect(jsonPath("$.curso", is("Engenharia")));
+//    }
+    
     @Test
     public void testInserir() throws Exception {
-//        Aluno aluno = new Aluno(1L, "João", 20, "Engenharia");
-    	Aluno aluno = new Aluno();
-    	aluno.setNome("João");
-    	aluno.setIdade(20);
-    	aluno.setCurso("Engenharia");
+        Aluno aluno = new Aluno(1L, "João", 20, "Engenharia");
 
-        given(alunoRepository.save(aluno)).willReturn(aluno);
+        // Mock the behavior of the save method to return the expected Aluno object
+        when(alunoRepository.save((Aluno) any(Aluno.class))).thenReturn(aluno);
 
         mockMvc.perform(post("/alunos")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -100,6 +114,7 @@ public class AlunoControllerTest {
                 .andExpect(jsonPath("$.idade", is(20)))
                 .andExpect(jsonPath("$.curso", is("Engenharia")));
     }
+
 
     @Test
     public void testAtualizar() throws Exception {

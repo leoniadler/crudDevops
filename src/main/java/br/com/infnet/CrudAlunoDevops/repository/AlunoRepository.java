@@ -7,5 +7,6 @@ import br.com.infnet.CrudAlunoDevops.model.Aluno;
 
 @Repository
 public interface AlunoRepository extends JpaRepository<Aluno, Long> {
+	Aluno save(Aluno aluno);
 }
 
