@@ -30,13 +30,13 @@ import org.slf4j.Logger;
 	@AutoConfigureMockMvc
 	public class CrudAlunoDevopsApplicationTests {
 		
-		private Logger logger = LoggerFactory.getLogger(CrudAlunoDevopsApplicationTests.class);
-		
-	    @Autowired
-	    private AlunoRepository alunoRepository;
-	    
-	    @Autowired
-	    private MockMvc mockMvc;
+//		private Logger logger = LoggerFactory.getLogger(CrudAlunoDevopsApplicationTests.class);
+//		
+//	    @Autowired
+//	    private AlunoRepository alunoRepository;
+//	    
+//	    @Autowired
+//	    private MockMvc mockMvc;
 
 	    
 	   
@@ -62,8 +62,8 @@ import org.slf4j.Logger;
 
 	    
 
-	    private void assertEquals(int i, int status) {
-	    }
+//	    private void assertEquals(int i, int status) {
+//	    }
 
 	    
 		

@@ -100,23 +100,6 @@ public class AlunoControllerTest {
 //                .andExpect(jsonPath("$.curso", is("Engenharia")));
 //    }
     
-//    @Test
-//    public void testInserir() throws Exception {
-//        Aluno aluno = new Aluno(1L, "João", 20, "Engenharia");
-//
-//        // Mock the behavior of the save method to return the expected Aluno object
-//        when(alunoRepository.save((Aluno) any(Aluno.class))).thenReturn(aluno);
-//
-//        mockMvc.perform(post("/alunos")
-//                .contentType(MediaType.APPLICATION_JSON)
-//                .content("{ \"id\": 1, \"nome\": \"João\", \"idade\": 20, \"curso\": \"Engenharia\" }"))
-//                .andExpect(status().isCreated())
-//                .andExpect(jsonPath("$.id", is(1)))
-//                .andExpect(jsonPath("$.nome", is("João")))
-//                .andExpect(jsonPath("$.idade", is(20)))
-//                .andExpect(jsonPath("$.curso", is("Engenharia")));
-//    }
-    
     @Test
     public void testInserir() throws Exception {
         Aluno aluno = new Aluno(1L, "João", 20, "Engenharia");
@@ -132,10 +115,29 @@ public class AlunoControllerTest {
                 .andExpect(jsonPath("$.nome", is("João")))
                 .andExpect(jsonPath("$.idade", is(20)))
                 .andExpect(jsonPath("$.curso", is("Engenharia")));
+        	verify(alunoRepository, times(1)).save(aluno);
 
-        // Verify that the save method of the repository was called with the expected object
-        verify(alunoRepository, times(1)).save(aluno);
     }
+    
+//    @Test
+//    public void testInserir() throws Exception {
+//        Aluno aluno = new Aluno(1L, "João", 20, "Engenharia");
+//
+//        // Mock the behavior of the save method to return the expected Aluno object
+//        when(alunoRepository.save(any())).thenReturn(aluno);
+//
+//        mockMvc.perform(post("/alunos")
+//                .contentType(MediaType.APPLICATION_JSON)
+//                .content("{ \"id\": 1, \"nome\": \"João\", \"idade\": 20, \"curso\": \"Engenharia\" }"))
+//                .andExpect(status().isCreated())
+//                .andExpect(jsonPath("$.id", is(1)))
+//                .andExpect(jsonPath("$.nome", is("João")))
+//                .andExpect(jsonPath("$.idade", is(20)))
+//                .andExpect(jsonPath("$.curso", is("Engenharia")));
+//
+//        // Verify that the save method of the repository was called with the expected object
+//        verify(alunoRepository, times(1)).save(aluno);
+//    }
 
 
     @Test
