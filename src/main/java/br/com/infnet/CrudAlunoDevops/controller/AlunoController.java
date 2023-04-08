@@ -46,11 +46,7 @@ public class AlunoController {
         }
     }
     
-    @PostMapping(produces = "application/json")
-    public Aluno save(@RequestBody Aluno aluno) {
-        
-        return AlunoService.save(aluno);
-    }
+   
 
 //    @PostMapping("/{id}")
 //    @ResponseStatus(HttpStatus.CREATED)
@@ -60,11 +56,11 @@ public class AlunoController {
 //    
  
 //
-//    @PostMapping
-//    @ResponseStatus(HttpStatus.CREATED)
-//    public Aluno inserir(@RequestBody Aluno aluno) {
-//        return alunoRepository.save(aluno);
-//    }
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public Aluno inserir(@RequestBody Aluno aluno) {
+        return alunoRepository.save(aluno);
+    }
 
 
     @PutMapping("/{id}")
