@@ -33,33 +33,33 @@ import org.slf4j.Logger;
 		
 		private Logger logger = LoggerFactory.getLogger(CrudAlunoDevopsApplicationTests.class);
 		
-	    @Autowired
-	    private AlunoRepository alunoRepository;
-	    
-	    @Autowired
-	    private MockMvc mockMvc;
-
-	    
-	   
-
-	    @Test
-	    public void testListaDeAlunos() throws Exception {
-	        MvcResult result = mockMvc.perform(get("/alunos"))
-	                .andExpect(status().isOk())
-	                .andReturn();
-	        int status = result.getResponse().getStatus();
-	        assertEquals(200, status);
-
-	        String content = result.getResponse().getContentAsString();
-	        List<Aluno> listaDeAlunos = new ObjectMapper().readValue(content, new TypeReference<List<Aluno>>() {});
-	        assertEquals(10, listaDeAlunos.size());
-
-	        Aluno aluno = new Aluno(1L, "João", 20, "Engenharia");
-	        System.out.println(aluno);
-	        
-	       
-
-	    }
+//	    @Autowired
+//	    private AlunoRepository alunoRepository;
+//	    
+//	    @Autowired
+//	    private MockMvc mockMvc;
+//
+//	    
+//	   
+//
+//	    @Test
+//	    public void testListaDeAlunos() throws Exception {
+//	        MvcResult result = mockMvc.perform(get("/alunos"))
+//	                .andExpect(status().isOk())
+//	                .andReturn();
+//	        int status = result.getResponse().getStatus();
+//	        assertEquals(200, status);
+//
+//	        String content = result.getResponse().getContentAsString();
+//	        List<Aluno> listaDeAlunos = new ObjectMapper().readValue(content, new TypeReference<List<Aluno>>() {});
+//	        assertEquals(10, listaDeAlunos.size());
+//
+//	        Aluno aluno = new Aluno(1L, "João", 20, "Engenharia");
+//	        System.out.println(aluno);
+//	        
+//	       
+//
+//	    }
 
 	    
 

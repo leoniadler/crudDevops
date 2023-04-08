@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.infnet.CrudAlunoDevops.model.Aluno;
 import br.com.infnet.CrudAlunoDevops.repository.AlunoRepository;
+import br.com.infnet.CrudAlunoDevops.service.AlunoService;
 
 @RestController
 @RequestMapping("/alunos")
@@ -44,13 +45,19 @@ public class AlunoController {
             return ResponseEntity.notFound().build();
         }
     }
-
-    @PostMapping("/{id}")
-    @ResponseStatus(HttpStatus.CREATED)
-    public Aluno inserir(@RequestBody Aluno aluno) {
-        return alunoRepository.save(aluno);
-    }
     
+    @PostMapping(produces = "application/json")
+    public Aluno save(@RequestBody Aluno aluno) {
+        
+        return AlunoService.save(aluno);
+    }
+
+//    @PostMapping("/{id}")
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public Aluno inserir(@RequestBody Aluno aluno) {
+//        return alunoRepository.save(aluno);
+//    }
+//    
  
 //
 //    @PostMapping
