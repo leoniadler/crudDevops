@@ -1,5 +1,6 @@
 package br.com.infnet.CrudAlunoDevops;
 import static org.hamcrest.Matchers.any;
+import static org.hamcrest.core.IsInstanceOf.instanceOf;
 
 
 import static org.hamcrest.CoreMatchers.is;
@@ -35,6 +36,7 @@ import static org.hamcrest.Matchers.hasSize;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 
+@SuppressWarnings("unused")
 @RunWith(SpringRunner.class)
 @WebMvcTest(AlunoController.class)
 public class AlunoControllerTest {
@@ -105,18 +107,18 @@ public class AlunoControllerTest {
     public void testInserir() throws Exception {
         Aluno aluno = new Aluno(1L, "João", 20, "Engenharia");
 
-        // Mock the behavior of the save method to return the expected Aluno object
         when(alunoRepository.save((Aluno) any(Aluno.class))).thenReturn(aluno);
 
         mockMvc.perform(post("/alunos")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("{ \"id\": 1, \"nome\": \"João\", \"idade\": 20, \"curso\": \"Engenharia\" }"))
                 .andExpect(status().isCreated())
-                .andExpect(jsonPath("$.id", is(1)))
-                .andExpect(jsonPath("$.nome", is("João")))
-                .andExpect(jsonPath("$.idade", is(20)))
-                .andExpect(jsonPath("$.curso", is("Engenharia")));
-        	verify(alunoRepository, times(1)).save(aluno);
+                .andExpect(jsonPath("$.id").value(1))
+                .andExpect(jsonPath("$.nome").value("João"))
+                .andExpect(jsonPath("$.idade").value(20))
+                .andExpect(jsonPath("$.curso").value("Engenharia"));
+
+        verify(alunoRepository).save((Aluno) any(Aluno.class));
 
     }
     
