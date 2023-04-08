@@ -115,43 +115,7 @@ public class AlunoControllerTest {
             .andExpect(jsonPath("$.curso", is("Administração")));
     
 
-//	@SpringBootTest
-//	@AutoConfigureTestDatabase
-//	@AutoConfigureMockMvc
-//	public class AlunoControllerTest {
-//	    @Autowired
-//	    private AlunoRepository alunoRepository;
-//	    
-//	    @Autowired
-//	    private MockMvc mockMvc;
-//
-//	    
-//
-////	    @Test
-////	    public void testListaDeAlunos() throws Exception {
-////	        mockMvc.perform(get("/alunos"))
-////	                .andExpect(status().isOk())
-////	                .andExpect(content().string(containsString("Lista de alunos:")))
-////	                .andExpect(content().string(containsString("João da Silva")))
-////	                .andExpect(content().string(containsString("Maria Souza")));
-////	    }
-//
-//
-//	    @Test
-//	    public void testListaDeAlunos() throws Exception {
-//	        MvcResult result = mockMvc.perform(get("/alunos"))
-//	                .andExpect(status().isOk())
-//	                .andReturn();
-//	        int status = result.getResponse().getStatus();
-//	        assertEquals(200, status);
-//	    }
-//
-//
-//
-//		private void assertEquals(int i, int status) {
-//			// TODO Auto-generated method stub
-//			
-//		}
+
 
 	    
 

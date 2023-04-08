@@ -40,7 +40,7 @@ public class AlunoController {
         }
     }
 
-    @PostMapping
+    @PostMapping("/{id}")
     @ResponseStatus(HttpStatus.CREATED)
     public Aluno inserir(@RequestBody Aluno aluno) {
         return alunoRepository.save(aluno);
