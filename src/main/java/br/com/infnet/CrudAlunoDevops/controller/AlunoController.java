@@ -30,6 +30,11 @@ public class AlunoController {
         return alunoRepository.findAll();
     }
 
+    
+    public AlunoController(AlunoRepository alunoRepository) {
+        this.alunoRepository = alunoRepository;
+    }
+    
     @GetMapping("/{id}")
     public ResponseEntity<Aluno> buscarPorId(@PathVariable Long id) {
         Optional<Aluno> aluno = alunoRepository.findById(id);
@@ -46,11 +51,7 @@ public class AlunoController {
 //        return alunoRepository.save(aluno);
 //    }
     
-   
-
-    public AlunoController(AlunoRepository alunoRepository) {
-        this.alunoRepository = alunoRepository;
-    }
+ 
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
