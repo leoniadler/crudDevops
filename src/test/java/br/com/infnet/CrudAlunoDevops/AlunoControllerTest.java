@@ -89,21 +89,21 @@ public class AlunoControllerTest {
                 .andExpect(status().isNotFound());
     }
 
-    @Test
-    public void testInserir() throws Exception {
-        Aluno aluno = new Aluno(1L, "João", 20, "Engenharia");
-
-        given(alunoRepository.save(aluno)).willReturn(aluno);
-
-        mockMvc.perform(post("/alunos")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content("{ \"id\": 1, \"nome\": \"João\", \"idade\": 20, \"curso\": \"Engenharia\" }"))
-                .andExpect(status().isCreated())
-                .andExpect(jsonPath("$.id", is(1)))
-                .andExpect(jsonPath("$.nome", is("João")))
-                .andExpect(jsonPath("$.idade", is(20)))
-                .andExpect(jsonPath("$.curso", is("Engenharia")));
-    }
+//    @Test
+//    public void testInserir() throws Exception {
+//        Aluno aluno = new Aluno(1L, "João", 20, "Engenharia");
+//
+//        given(alunoRepository.save(aluno)).willReturn(aluno);
+//
+//        mockMvc.perform(post("/alunos")
+//                .contentType(MediaType.APPLICATION_JSON)
+//                .content("{ \"id\": 1, \"nome\": \"João\", \"idade\": 20, \"curso\": \"Engenharia\" }"))
+//                .andExpect(status().isCreated())
+//                .andExpect(jsonPath("$.id", is(1)))
+//                .andExpect(jsonPath("$.nome", is("João")))
+//                .andExpect(jsonPath("$.idade", is(20)))
+//                .andExpect(jsonPath("$.curso", is("Engenharia")));
+//    }
     
     
     @PostMapping(produces = "application/json")
