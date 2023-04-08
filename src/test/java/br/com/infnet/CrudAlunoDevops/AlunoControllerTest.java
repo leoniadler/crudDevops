@@ -83,7 +83,11 @@ public class AlunoControllerTest {
 
     @Test
     public void testInserir() throws Exception {
-        Aluno aluno = new Aluno(1L, "João", 20, "Engenharia");
+//        Aluno aluno = new Aluno(1L, "João", 20, "Engenharia");
+    	Aluno aluno = new Aluno();
+    	aluno.setNome("João");
+    	aluno.setIdade(20);
+    	aluno.setCurso("Engenharia");
 
         given(alunoRepository.save(aluno)).willReturn(aluno);
 
