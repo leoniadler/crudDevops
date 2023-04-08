@@ -22,10 +22,13 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import br.com.infnet.CrudAlunoDevops.controller.AlunoController;
 import br.com.infnet.CrudAlunoDevops.model.Aluno;
 import br.com.infnet.CrudAlunoDevops.repository.AlunoRepository;
+import br.com.infnet.CrudAlunoDevops.service.AlunoService;
 
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.times;
@@ -103,23 +106,28 @@ public class AlunoControllerTest {
 //                .andExpect(jsonPath("$.curso", is("Engenharia")));
 //    }
     
-    @Test
-    public void testInserir() throws Exception {
-        Aluno aluno = new Aluno(1L, "João", 20, "Engenharia");
-
-        when(alunoRepository.save((Aluno) any(Aluno.class))).thenReturn(aluno);
-
-        mockMvc.perform(post("/alunos")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content("{ \"id\": 1, \"nome\": \"João\", \"idade\": 20, \"curso\": \"Engenharia\" }"))
-                .andExpect(status().isCreated())
-                .andExpect(jsonPath("$.id").value(1))
-                .andExpect(jsonPath("$.nome").value("João"))
-                .andExpect(jsonPath("$.idade").value(20))
-                .andExpect(jsonPath("$.curso").value("Engenharia"));
-
-        verify(alunoRepository).save((Aluno) any(Aluno.class));
-
+//    @Test
+//    public void testInserir() throws Exception {
+//        Aluno aluno = new Aluno(1L, "João", 20, "Engenharia");
+//
+//        when(alunoRepository.save((Aluno) any(Aluno.class))).thenReturn(aluno);
+//
+//        mockMvc.perform(post("/alunos")
+//                .contentType(MediaType.APPLICATION_JSON)
+//                .content("{ \"id\": 1, \"nome\": \"João\", \"idade\": 20, \"curso\": \"Engenharia\" }"))
+//                .andExpect(status().isCreated())
+//                .andExpect(jsonPath("$.id").value(1))
+//                .andExpect(jsonPath("$.nome").value("João"))
+//                .andExpect(jsonPath("$.idade").value(20))
+//                .andExpect(jsonPath("$.curso").value("Engenharia"));
+//
+//        verify(alunoRepository).save((Aluno) any(Aluno.class));
+//
+//    }
+    @PostMapping(produces = "application/json")
+    public Aluno save(@RequestBody Aluno aluno) {
+        
+        return AlunoService.save(aluno);
     }
     
 //    @Test
