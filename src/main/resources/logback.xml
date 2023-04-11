@@ -1,0 +1,53 @@
+<configuration>
+  <include resource="org/springframework/boot/logging/logback/base.xml" />
+  <springProfile name="zipkin">
+    <springProperty name="spring.sleuth.sampler.probability" value="1.0"/>
+    <appender name="zipkin" class="zipkin2.logback.appender.AsyncZipkinSpanHandler">
+      <encoder>
+        <pattern>%msg%n</pattern>
+      </encoder>
+      <endpoint>http://localhost:9411/api/v2/spans</endpoint>
+      <compressionEnabled>true</compressionEnabled>
+      <basicAuthUsername>zipkin</basicAuthUsername>
+      <basicAuthPassword>zipkin</basicAuthPassword>
+      <messageMaxBytes>512000</messageMaxBytes>
+      <flushInterval>1</flushInterval>
+    </appender>
+    <root level="DEBUG">
+      <appender-ref ref="zipkin"/>
+    </root>
+  </springProfile>
+
+     <!-- <appender name="PAPERTRAIL" class="ch.qos.logback.classic.net.SyslogAppender">
+        <syslogHost>HOST_DO_PAPERTRAIL</syslogHost>
+        <facility>USER</facility>
+        <suffixPattern>%msg</suffixPattern>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="PAPERTRAIL"/>
+    </root>  -->
+    
+   <!--  <include resource="org/springframework/boot/logging/logback/base.xml" />
+    <springProperty scope="context" name="appName" source="spring.application.name"/>
+
+    <appender name="LOKI" class="com.github.loki4j.logback.Loki4jAppender">
+        <http>
+            <url>http://loki:3100/loki/api/v1/push</url>
+        </http>
+        <format>
+            <label>
+                <pattern>app=${appName},host=${HOSTNAME},traceID=%X{traceId:-NONE},level=%level</pattern>
+            </label>
+            <message>
+                <pattern>${FILE_LOG_PATTERN}</pattern>
+            </message>
+            <sortByTime>true</sortByTime>
+        </format>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="LOKI"/>
+    </root> -->
+
+</configuration>
